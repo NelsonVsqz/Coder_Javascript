@@ -1,22 +1,22 @@
 body{
     background: url("../mg/fondo.jpg") no-repeat center center fixed;
     background-size: cover;
-    opacity: 0.85;
+    opacity: 0.8;
 }
 h1{
     color: #fdfef7;
     text-align: center;
-    font-family: 'arial';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 label{
     color: #fdfef7;
-    font-family: 'arial';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
 .form{
     width: 550px;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 85px;
     border:  2px;
 }
 .subform div{
@@ -42,7 +42,8 @@ button{
     background-color: #fdfef7;
     border: #6736ec 1.8px solid;
     width: 100px;
-    font-family: 'arial';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     font-size: 15px;  
     border-radius: 2px;
     padding: 10px;
@@ -52,7 +53,7 @@ button{
 .classtabla{
     border-collapse: collapse;
     text-align: center;
-    font-family: 'arial';
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
     background-color: #fdfef7;
     border: #173441 2px solid;
     margin: 0 auto;
