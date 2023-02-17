@@ -37,6 +37,17 @@ label{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
+.divlabel{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;    
+}
+.labeldescuento{
+  color: #2c2e53;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
 .form{
     width: 550px;
     margin: 0 auto;
@@ -132,7 +143,7 @@ td{
   }
   
   .popup-content button {
-    margin-left: 50px;
+    margin-left: 110px;
     background-color: #051394;
     color: #fff;
     border: none;

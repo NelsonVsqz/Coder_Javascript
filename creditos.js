@@ -42,10 +42,33 @@ function mostrarResultado(cuotas) {
   document.getElementById("t3").innerHTML = cuotas.sumaTotal;
 }
 
+
+
+
+const popup = document.getElementById("popup");
+const inputName = document.getElementById("input-name");
+const inputDesc = document.getElementById("input-desc");
+const submitName = document.getElementById("submit-name");
+const titleName = document.getElementById("title-name");
+const domDesc = document.getElementById("dom-desc");
+const labelDesc = document.getElementById("label-desc");
+submitName.addEventListener("click", function() {
+  const name = inputName.value;
+  const desc = inputDesc.value;
+  titleName.innerHTML = "Bienvenido "+name
+  domDesc.value = desc
+  buscoDescuento(desc)
+  popup.style.display = "none";
+});
+
+popup.style.display = "flex";
+
 function calcular() {
+  const desc = domDesc.value;
+  const descuento = buscoDescuento(desc)
   const capital = obtenerValorInput("capital");
   const cuotas = obtenerValorInput("couta");
-  const interes = obtenerValorInput("interes");
+  const interes = obtenerValorInput("interes")-descuento ;
 
   if (capital > 0) {
     const cuotasCalculadas = calcularCuotas(capital, cuotas, interes);
@@ -56,18 +79,49 @@ function calcular() {
 }
 
 
-const popup = document.getElementById("popup");
-const inputName = document.getElementById("input-name");
-const submitName = document.getElementById("submit-name");
-const titleName = document.getElementById("title-name");
+let codigosDescuento =[
+{
+codigo: "D5",  
+descuento: 5
+},
+{
+  codigo: "D10",  
+  descuento: 10
+  },
+{
+  codigo: "D15",  
+  descuento: 15
+  },  
+{
+    codigo: "D20",  
+    descuento: 20
+    }
+]
+domDesc.addEventListener("input", function() {
+  
+  let descuento = domDesc.value 
+  let buscoCod = codigosDescuento.filter(x => x.codigo == descuento )
+  if(buscoCod.length > 0) {
+  labelDesc.innerHTML = "Codigo de descuento verificado"
+  } else{
+    labelDesc.innerHTML = "Codigo de descuento no verificado"  
+  }
 
-submitName.addEventListener("click", function() {
-  const name = inputName.value;
-  titleName.innerHTML = "Bienvenido "+name
-  popup.style.display = "none";
 });
 
-popup.style.display = "flex";
+function buscoDescuento(desc) { 
+  let buscoCod = codigosDescuento.filter(x => x.codigo == desc)
+  if(buscoCod.length > 0) {
+  labelDesc.innerHTML = "Codigo de descuento verificado"
+ let num = buscoCod[0].descuento
+return num
+} else{
+    labelDesc.innerHTML = "Codigo de descuento no verificado"  
+return 0
+  }
+ 
+  
+};
 
 
 
