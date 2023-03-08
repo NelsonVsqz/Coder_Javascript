@@ -47,6 +47,7 @@ function mostrarResultado(cuotas) {
 
 const popup = document.getElementById("popup");
 const inputName = document.getElementById("input-name");
+const inputDoc = document.getElementById("input-doc");
 const inputDesc = document.getElementById("input-desc");
 const submitName = document.getElementById("submit-name");
 const titleName = document.getElementById("title-name");
@@ -54,10 +55,12 @@ const domDesc = document.getElementById("dom-desc");
 const labelDesc = document.getElementById("label-desc");
 submitName.addEventListener("click", function() {
   const name = inputName.value;
+  const doc = inputDoc.value;
   const desc = inputDesc.value;
   titleName.innerHTML = "Bienvenido "+name
   domDesc.value = desc
   buscoDescuento(desc)
+  verificoUsuario(doc,name)
   popup.style.display = "none";
 });
 
@@ -118,10 +121,33 @@ return num
 } else{
     labelDesc.innerHTML = "Codigo de descuento no verificado"  
 return 0
-  }
- 
-  
+  }  
 };
+
+function verificoUsuario(documento,nombre){
+const user = {
+  name: '',
+  id: ''
+};
+user.name = nombre
+user.id = documento
+if (localStorage.getItem('user')) {
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+
+  if (storedUser.name === user.name && storedUser.id === user.id) {
+    alertify.alert('¡Bienvenido de nuevo!', 'Estimado '+user.name, function(){ alertify.success('Calculemos el prestamo'); });
+  } else {
+    alertify.alert('Parece que no eres el mismo usuario que visitó el sitio anteriormente', 'Te doy la bienvenida igualmente estimado '+ user.name, function(){ alertify.success('Calculemos el prestamo'); });
+  }
+} else {
+  alertify.alert('¡Bienvenido por primera vez!', 'Gracias por visitarnos estimado '+ user.name, function(){ alertify.success('Calculemos el prestamo'); });
+  localStorage.setItem('user', JSON.stringify(user));
+}
+
+}
+
+
+
 
 
 
