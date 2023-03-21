@@ -1,5 +1,5 @@
 body {
-  background: url("../mg/fondo.jpg") no-repeat center center fixed;
+  background: url("./mg/fondo.jpg") no-repeat center center fixed;
   background-size: cover;
   opacity: 0.8;
 }
